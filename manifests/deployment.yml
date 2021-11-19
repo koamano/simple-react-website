@@ -16,4 +16,4 @@ spec:
         - name: "koamano-website"
           image: "crkoamano.azurecr.io/akskoamano-react"
           ports:
-          - containerPort: 80
+          - containerPort: 3000
