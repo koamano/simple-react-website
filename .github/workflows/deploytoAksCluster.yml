@@ -14,8 +14,8 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/calculator_react" -f  "calculator_react/Dockerfile" -t crkoamano.azurecr.io/akskoamano:${{ github.sha }} --label dockerfile-path=calculator_react/Dockerfile
-        docker push crkoamano.azurecr.io/akskoamano:${{ github.sha }}
+        docker build "$GITHUB_WORKSPACE/calculator_react" -f  "calculator_react/Dockerfile" -t crkoamano.azurecr.io/akskoamano-react:${{ github.sha }} --label dockerfile-path=calculator_react/Dockerfile
+        docker push crkoamano.azurecr.io/akskoamano-react:${{ github.sha }}
     
     - uses: azure/k8s-set-context@v1
       with:
@@ -45,6 +45,6 @@ jobs:
           manifests/deployment.yml
           manifests/service.yml
         images: |
-          crkoamano.azurecr.io/akskoamano:${{ github.sha }}
+          crkoamano.azurecr.io/akskoamano-react:${{ github.sha }}
         imagepullsecrets: |
           akskoamanodockerauth
